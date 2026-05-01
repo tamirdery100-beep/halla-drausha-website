@@ -1,16 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowLeft, PlayCircle, ShieldCheck, Sparkles } from "lucide-react";
-
-// Lazy-load the 3D — keeps first paint fast
-const WaterFlow = dynamic(() => import("@/components/3d/WaterFlow"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-gradient-to-b from-[#001b2e] via-brand-deep to-[#001b2e]" />
-  ),
-});
+import WaterFlowGate from "@/components/3d/WaterFlowGate";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -31,9 +23,9 @@ export default function Hero() {
       id="top"
       className="relative isolate min-h-[100svh] overflow-hidden bg-brand-deep text-white"
     >
-      {/* 3D background */}
+      {/* 3D background — desktop only; mobile/no-WebGL gets a static fallback */}
       <div className="absolute inset-0 -z-10">
-        <WaterFlow />
+        <WaterFlowGate />
       </div>
 
       {/* Atmospheric overlays */}
