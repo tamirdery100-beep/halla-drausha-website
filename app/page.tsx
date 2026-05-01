@@ -6,6 +6,8 @@ import TrustStrip from "@/components/sections/TrustStrip";
 import Services from "@/components/sections/Services";
 import Process from "@/components/sections/Process";
 import Projects from "@/components/sections/Projects";
+import ProjectsInProgress from "@/components/sections/ProjectsInProgress";
+import TrustedDevelopers from "@/components/sections/TrustedDevelopers";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
 import Faq from "@/components/sections/Faq";
@@ -22,6 +24,8 @@ export default function HomePage() {
         <Services />
         <Process />
         <Projects />
+        <ProjectsInProgress />
+        <TrustedDevelopers />
         <Testimonials />
         <About />
         <Faq />

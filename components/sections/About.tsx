@@ -2,8 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Award, BadgeCheck } from "lucide-react";
+import { Award, BadgeCheck, ArrowLeft } from "lucide-react";
 import { ABOUT } from "@/lib/constants";
+
+/** Stats בולטים לצד הביוגרפיה — שלושה מספרים שמסכמים את הנוכחות המקצועית. */
+const ABOUT_STATS = [
+  { value: "8", suffix: "שנים", label: "ניסיון מעשי כיועצת עצמאית" },
+  { value: "150+", suffix: "פרויקטים", label: "ממלונאות ועד תשתיות לאומיות" },
+  { value: "2018", suffix: "מאז", label: "רישוי בפנקס המהנדסים" },
+] as const;
 
 export default function About() {
   return (
@@ -100,6 +107,28 @@ export default function About() {
             ))}
           </div>
 
+          {/* Stats highlights */}
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-y border-brand-line py-7"
+          >
+            {ABOUT_STATS.map((stat) => (
+              <li key={stat.label} className="min-w-0">
+                <p className="font-display font-bold leading-none">
+                  <span className="text-brand-deep text-3xl sm:text-4xl">
+                    {stat.value}
+                  </span>
+                  <span className="text-brand-cyan text-base sm:text-lg ms-1.5">
+                    {stat.suffix}
+                  </span>
+                </p>
+                <p className="mt-2 text-xs sm:text-sm text-brand-muted leading-snug">
+                  {stat.label}
+                </p>
+              </li>
+            ))}
+          </ul>
+
           {/* Credentials list */}
           <ul className="mt-10 grid sm:grid-cols-2 gap-y-4 gap-x-6">
             {ABOUT.credentials.map((c, i) => (
@@ -119,6 +148,23 @@ export default function About() {
               </li>
             ))}
           </ul>
+
+          {/* CTA */}
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a href="#contact" className="btn-primary group">
+              <span>התחילו פרויקט</span>
+              <ArrowLeft
+                className="w-4 h-4 transition-transform duration-500 group-hover:-translate-x-1"
+                strokeWidth={2.4}
+              />
+            </a>
+            <a
+              href="/sanitary-supplement"
+              className="text-sm font-semibold text-brand-deep link-underline"
+            >
+              קראו על תהליך נספח סניטרי
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
